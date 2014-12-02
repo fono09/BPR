@@ -20,13 +20,13 @@ while(1){
 
 	my $c = 0b0;
 
-	for(my $i=1; $b > 0b0; $i++){
-		my $b_ = $b >> $i;
-		$b_ = $b_ << $i;
-		$c = $c^($a*($b - $b_));
+	my $i=0b0;
+	while($b){
+		
+		$c ^= ($a << $i) if($b%2);
+		$b = $b>>1;
+		$i++;
 
-		$b = $b >> $i;
-		$b = $b << $i;
 	}
 
 	printf("%0*b\n",$l,$c);
